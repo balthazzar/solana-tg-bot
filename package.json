@@ -1,0 +1,44 @@
+{
+  "name": "solana-tg-bot",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Andrey Koreshokv",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node --enable-source-maps build/index.js",
+    "dev": "ts-node -r tsconfig-paths/register src/index.ts",
+    "build": "rm -rf dist && swc src -d dist --strip-leading-paths && tsc-alias",
+    "build:ts-node": "rm -rf dist && tsc && tsc-alias",
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "prepack": "yarn lint",
+    "prepublish": "yarn build",
+    "prepare": "husky"
+  },
+  "packageManager": "yarn@4.1.1",
+  "main": "index.js",
+  "dependencies": {
+    "@grammyjs/ratelimiter": "1.2.0",
+    "@solana/web3.js": "1.91.8",
+    "grammy": "1.22.4",
+    "redis": "^4.7.0",
+    "telegram": "2.20.15"
+  },
+  "devDependencies": {
+    "@swc/cli": "0.3.12",
+    "@swc/core": "1.4.17",
+    "@types/node": "20.12.8",
+    "husky": "9.0.11",
+    "prettier": "3.2.5",
+    "source-map-support": "0.5.21",
+    "ts-node": "10.9.2",
+    "tsc-alias": "1.8.8",
+    "tsconfig-paths": "4.2.0",
+    "typescript": "5.4.5"
+  },
+  "resolutions": {
+    "rpc-websockets": "7.11.0"
+  },
+  "engines": {
+    "node": ">= 20.0.0"
+  }
+}

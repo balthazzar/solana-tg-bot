@@ -1,0 +1,7 @@
+export const TOP_HOLDERS_SIZE = 10;
+
+export const RAYDIUM_LIQUIDITY_POOL_V4_ACCOUNT = '675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8';
+
+export const PUMP_FUN_MINT_ACCOUNT = 'TSLvdd1pWpHVjahSpsvCXUbgwsL3JAcvokwaKt1eokM';
+
+export const JSON_RPC_SERVER_ERROR_ACCOUNT_NOT_FOUND = -32602;

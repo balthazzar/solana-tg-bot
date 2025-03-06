@@ -1,0 +1,43 @@
+{
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+  ],
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": false,
+    "esModuleInterop": true,
+    "target": "ES2022",
+    "lib": [
+      "ESNext",
+    ],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "strict": true,
+    "alwaysStrict": true,
+    "allowJs": false,
+    "checkJs": false,
+    "paths": {
+      "#common": ["src/common"],
+      "#common/*": ["src/common/*"],
+      "#modules": ["src/modules"],
+      "#modules/*": ["src/modules/*"],
+      "#base": ["src"],
+      "#base/*": ["src/*"]
+    }
+  },
+  "tsc-alias": {
+    "resolveFullPaths": false
+  }
+}
