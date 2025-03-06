@@ -1,5 +1,4 @@
 import process from 'node:process';
-import { PerformanceObserver } from 'node:perf_hooks';
 import {
   Bot,
   Composer,
@@ -24,8 +23,6 @@ export class TelegramBotProvider implements IBotProvider<PollingOptions> {
   readonly #commands = new Set<FilterQuery>();
 
   readonly #client: Bot<BotContext>;
-
-  readonly #performanceObserver: PerformanceObserver;
 
   constructor (cacheService: CacheService) {
     const apiKey = config.getOrThrow('TELEGRAM_API_KEY');
@@ -64,21 +61,12 @@ export class TelegramBotProvider implements IBotProvider<PollingOptions> {
       }),
     );
 
-    this.#performanceObserver = new PerformanceObserver((list) => {
-      const entry = list.getEntriesByType('function')[0];
-
-      console.debug(`Interaction took ${entry.duration.toFixed(2)}ms`);
-    });
   }
 
   public async startListening (providerOptions: PollingOptions): Promise<void> {
     // Graceful shutdown events
     process.once('SIGINT', () => this.#gracefulStop());
     process.once('SIGTERM', () => this.#gracefulStop());
-
-    this.#performanceObserver.observe({
-      type: 'function',
-    });
 
     this.#client
       .start(providerOptions)
@@ -155,7 +143,5 @@ export class TelegramBotProvider implements IBotProvider<PollingOptions> {
 
   async #gracefulStop (): Promise<void> {
     await this.#client.stop();
-
-    this.#performanceObserver?.disconnect();
   }
 }

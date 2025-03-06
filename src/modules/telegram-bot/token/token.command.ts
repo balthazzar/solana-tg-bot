@@ -35,7 +35,7 @@ export class TokenCommand implements ICommand<BotContext> {
     }
 
     const formattedResponse: string =
-      `Wallet balance ${balance / LAMPORTS_PER_SOL} SOL`;
+      `Wallet balance ${(balance / LAMPORTS_PER_SOL).toString().replace('.', '\\.')} SOL`;
 
     await context.api.editMessageText(
       responseMessage.chat.id,
